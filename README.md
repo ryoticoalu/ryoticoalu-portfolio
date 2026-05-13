@@ -4,7 +4,9 @@ Personal portfolio site for **Theophilus "Ryo" Ticoalu**, Motion Graphic Designe
 
 ## Live site
 
-> _Will be added after first deploy._
+**[ryoticoalu.pages.dev](https://ryoticoalu.pages.dev)**
+
+Hosted on Cloudflare Pages. Deploys are triggered manually via Wrangler — see [DEPLOY.md](DEPLOY.md).
 
 ## Tech stack
 
