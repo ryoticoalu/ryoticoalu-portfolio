@@ -40,7 +40,7 @@ if not "%~1"=="" (
   echo [2/2] Archiving live version to OneDrive...
 )
 
-for /f "delims=" %%I in ('powershell -NoProfile -Command "Get-Date -Format 'dd-MM-yy HH-mm'"') do set "ts=%%I"
+for /f "delims=" %%I in ('powershell -NoProfile -Command "Get-Date -Format 'dd-MM-yy hh-mm tt'"') do set "ts=%%I"
 set "od=%USERPROFILE%\OneDrive\Documents\Personal\CV\Portfolio Website"
 if not exist "%od%" mkdir "%od%"
 copy /Y index.html "%od%\Website - Portfolio (!ts!).html" >nul
