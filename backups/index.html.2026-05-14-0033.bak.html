@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYO TICOALU — Motion Graphic Designer & Digital Creative</title>
+<meta name="description" content="Theophilus 'Ryo' Ticoalu — Motion graphic designer and digital creative based in Jakarta. Currently at Popl. Previously BOLDe, Matahari, Jet-Commerce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=VT323&family=Space+Mono:wght@400;700&family=Major+Mono+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #0a0014;
+  --void-2: #14002a;
+  --void-3: #1f0035;
+  --neon-pink: #ff006e;
+  --neon-magenta: #ff2bd6;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #9d00ff;
+  --neon-yellow: #faff00;
+  --hot-coral: #ff5c8a;
+  --soft-violet: #c879ff;
+  --grid-line: rgba(255, 43, 214, 0.15);
+  --text: #f0f0ff;
+  --text-dim: #a89cc4;
+  --font-display: 'Audiowide', cursive;
+  --font-mono: 'VT323', monospace;
+  --font-secondary: 'Major Mono Display', monospace;
+  --font-body: 'Space Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255, 0, 110, 0.25), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(0, 240, 255, 0.2), transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(157, 0, 255, 0.15), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: gradientShift 20s ease-in-out infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.2) translate(-5%, 5%); }
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+.scanlines {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(255, 43, 214, 0.03) 3px, rgba(0,0,0,0) 4px);
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: overlay;
+}
+.noise {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+.container { position: relative; z-index: 1; }
+nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -1px;
+  transition: text-shadow 0.3s;
+}
+.logo:hover { text-shadow: 0 0 20px var(--neon-cyan); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 20px;
+}
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+  letter-spacing: 1px;
+}
+.nav-links a:hover { color: var(--neon-cyan); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--neon-cyan);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--neon-cyan);
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: slideUp 0.8s ease-out 0.2s forwards;
+}
+.hero-meta::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 160px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: slideUp 1s ease-out 0.4s forwards;
+}
+.hero h1 .line { display: block; position: relative; }
+.hero h1 .glitch {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-magenta), var(--neon-purple), var(--neon-cyan));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientFlow 8s ease infinite;
+}
+.hero h1 .outline {
+  -webkit-text-stroke: 2px var(--neon-pink);
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 0, 110, 0.5));
+}
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-dim);
+  max-width: 640px;
+  margin-bottom: 48px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: slideUp 0.8s ease-out 0.6s forwards;
+}
+.hero-status {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  align-items: center;
+  opacity: 0;
+  animation: slideUp 0.8s ease-out 0.8s forwards;
+  flex-wrap: wrap;
+}
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px;
+  border: 1px solid var(--neon-magenta);
+  border-radius: 100px;
+  background: rgba(255, 43, 214, 0.05);
+  backdrop-filter: blur(10px);
+}
+.status-dot {
+  width: 8px; height: 8px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--neon-cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.6;
+}
+.scroll-indicator::after {
+  content: '↓';
+  font-size: 24px;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.hero-sun {
+  position: absolute;
+  right: -100px; top: 50%;
+  transform: translateY(-50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--neon-magenta) 0%, var(--neon-purple) 40%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.4;
+  z-index: -1;
+  animation: floatSun 12s ease-in-out infinite;
+}
+@keyframes floatSun {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.1); }
+}
+.hero-decoration {
+  position: absolute;
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  color: var(--neon-cyan);
+  opacity: 0.4;
+  letter-spacing: 2px;
+}
+.deco-1 { top: 120px; right: 48px; writing-mode: vertical-rl; }
+.deco-2 { bottom: 120px; right: 48px; text-align: right; }
+.projects, .about, .experience {
+  padding: 160px 48px;
+  position: relative;
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  border-bottom: 1px solid var(--grid-line);
+  padding-bottom: 24px;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--neon-cyan);
+  letter-spacing: 2px;
+}
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-dim);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--neon-magenta) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 60px;
+}
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.project-card:nth-child(2n) { transform: translateY(60px); }
+.project-card:hover { transform: translateY(-12px); }
+.project-card:nth-child(2n):hover { transform: translateY(48px); }
+.project-image {
+  width: 100%;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--neon-magenta);
+  background: var(--void-2);
+  transition: border-color 0.4s;
+}
+.project-card:hover .project-image {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+}
+.project-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  z-index: 1;
+}
+.project-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--void) 100%);
+  opacity: 0.6;
+  z-index: 2;
+}
+.project-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  color: rgba(255, 255, 255, 0.95);
+  z-index: 3;
+  text-shadow: 0 0 40px rgba(255, 0, 110, 0.8);
+  transition: transform 0.4s;
+  text-align: center;
+  padding: 24px;
+}
+.project-placeholder .big {
+  font-size: clamp(40px, 6vw, 80px);
+  letter-spacing: -3px;
+  line-height: 0.9;
+}
+.project-placeholder .small {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-top: 12px;
+  opacity: 0.9;
+}
+.project-card:hover .project-placeholder { transform: scale(1.08); }
+.project-info {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.project-meta { flex: 1; }
+.project-category {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--neon-cyan);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.project-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+.project-description {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  border: 1px solid var(--grid-line);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.project-card:nth-child(1) .project-image::before { background: linear-gradient(135deg, #ff006e 0%, #ff2bd6 50%, #9d00ff 100%); }
+.project-card:nth-child(2) .project-image::before { background: linear-gradient(225deg, #00f0ff 0%, #9d00ff 50%, #ff006e 100%); }
+.project-card:nth-child(3) .project-image::before { background: linear-gradient(45deg, #faff00 0%, #ff5c8a 50%, #9d00ff 100%); }
+.project-card:nth-child(4) .project-image::before { background: linear-gradient(315deg, #00f0ff 0%, #ff2bd6 50%, #faff00 100%); }
+.project-card:nth-child(5) .project-image::before { background: linear-gradient(180deg, #ff006e 0%, #faff00 100%); }
+.experience {
+  background: linear-gradient(180deg, transparent 0%, var(--void-2) 50%, transparent 100%);
+}
+.timeline {
+  margin-top: 60px;
+  position: relative;
+}
+.timeline-line {
+  position: absolute;
+  left: 200px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--neon-pink), var(--neon-cyan), var(--neon-magenta));
+  box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 60px;
+  padding: 32px 0;
+  position: relative;
+  align-items: start;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 192px;
+  top: 44px;
+  width: 16px;
+  height: 16px;
+  background: var(--void);
+  border: 3px solid var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--neon-cyan);
+  z-index: 2;
+}
+.timeline-item.current::before {
+  background: var(--neon-cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--neon-cyan);
+  letter-spacing: 1px;
+  text-align: right;
+  padding-top: 36px;
+}
+.timeline-content { padding-left: 80px; }
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.timeline-company {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--neon-magenta);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.timeline-description {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 640px;
+}
+.current-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 12px;
+  padding: 2px 10px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  border: 1px solid var(--neon-cyan);
+  border-radius: 100px;
+  color: var(--neon-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  vertical-align: middle;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 60px;
+}
+.about-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple), var(--neon-cyan));
+  border: 2px solid var(--neon-cyan);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-image .placeholder-text {
+  font-family: var(--font-display);
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 4px;
+  text-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--neon-pink), transparent, var(--neon-cyan));
+  z-index: -1;
+  filter: blur(20px);
+  animation: glow 4s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+.about-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+.about-content h3 .highlight {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 30px var(--neon-cyan);
+}
+.about-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+.about-text p + p { margin-top: 20px; }
+.skills-section { margin-bottom: 32px; }
+.skills-header {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.skills-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 24px;
+  margin-bottom: 24px;
+}
+.skills-list li {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.skills-list li::before {
+  content: '◢';
+  color: var(--neon-magenta);
+  font-size: 16px;
+}
+.software-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.software-tag {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  padding: 4px 14px;
+  border: 1px solid var(--neon-purple);
+  border-radius: 4px;
+  background: rgba(157, 0, 255, 0.1);
+  color: var(--text);
+  letter-spacing: 1px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  border: 2px solid var(--neon-magenta);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-magenta), var(--neon-purple));
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: -1;
+}
+.btn:hover::before { transform: translateX(0); }
+.btn:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(255, 43, 214, 0.5);
+  transform: translateY(-2px);
+}
+.btn span { position: relative; z-index: 1; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-magenta));
+  border-color: var(--neon-pink);
+}
+.btn-primary::before {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+}
+footer {
+  padding: 80px 48px 40px;
+  border-top: 1px solid var(--grid-line);
+  position: relative;
+  background: var(--void-2);
+  overflow: hidden;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+.footer-cta h4 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+.footer-cta h4 .neon {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 40px var(--neon-cyan);
+}
+.footer-cta p {
+  font-family: var(--font-body);
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  font-size: 16px;
+}
+.footer-links h5 {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--neon-cyan);
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-links a:hover { color: var(--neon-magenta); }
+.footer-links a::after {
+  content: '→';
+  transition: transform 0.3s;
+}
+.footer-links a:hover::after { transform: translateX(4px); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--grid-line);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-dim);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.marquee {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+.marquee-content {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 180px;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--grid-line);
+  letter-spacing: -4px;
+  animation: scroll 30s linear infinite;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { gap: 16px; font-size: 16px; }
+  .hero, .projects, .about, .experience, footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .projects-grid, .about-grid, .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .project-card:nth-child(2n) { transform: translateY(0); }
+  .project-card:nth-child(2n):hover { transform: translateY(-12px); }
+  .project-image { height: 320px; }
+  .skills-list { grid-template-columns: 1fr; }
+  .hero-sun { right: -200px; width: 350px; height: 350px; }
+  .deco-1, .deco-2 { display: none; }
+  .timeline-line { left: 8px; }
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-left: 40px;
+  }
+  .timeline-item::before { left: 0; }
+  .timeline-year {
+    text-align: left;
+    padding-top: 0;
+    font-size: 16px;
+  }
+  .timeline-content { padding-left: 0; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+::selection { background: var(--neon-magenta); color: var(--void); }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-pink), var(--neon-cyan));
+  border-radius: 100px;
+}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="noise"></div>
+
+<div class="container">
+
+<nav>
+  <a href="#" class="logo">◢ RYO.TICOALU</a>
+  <ul class="nav-links">
+    <li><a href="#work">[01] Work</a></li>
+    <li><a href="#experience">[02] Experience</a></li>
+    <li><a href="#about">[03] About</a></li>
+    <li><a href="#contact">[04] Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-sun"></div>
+  <div class="hero-decoration deco-1">// EST. — JKT — ID</div>
+  <div class="hero-decoration deco-2">SYSTEM<br>ACTIVE_</div>
+
+  <div class="hero-meta">MOTION × DIGITAL × BRAND</div>
+
+  <h1>
+    <span class="line glitch">THEOPHILUS</span>
+    <span class="line outline">"RYO"</span>
+    <span class="line">TICOALU_</span>
+  </h1>
+
+  <p class="hero-tagline">
+    Motion graphic designer and digital creative based in Jakarta. I blend motion, UI/UX thinking, and performance marketing to elevate brands across digital touchpoints. Currently at Popl.
+  </p>
+
+  <div class="hero-status">
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      <span>OPEN TO COLLABS</span>
+    </div>
+    <div class="status-pill">
+      <span>◢ JAKARTA, ID</span>
+    </div>
+    <div class="status-pill">
+      <span>@ POPL.CO</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">SCROLL DOWN</div>
+</section>
+
+<section class="projects" id="work">
+  <div class="section-header">
+    <div class="section-label">// SELECTED WORK</div>
+    <div class="section-number">[01 / 04]</div>
+  </div>
+
+  <h2 class="section-title">Featured<br>Projects.</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-image">
+        <div class="project-placeholder">
+          <div class="big">POPL</div>
+          <div class="small">// MOTION + DIGITAL</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <div class="project-category">// MOTION + UI/UX</div>
+          <h3 class="project-title">Popl Digital Presence</h3>
+          <p class="project-description">Motion graphics, podcast editing, logo animation, and Figma-based web layouts. Plus targeted creative for LinkedIn & Meta Ads.</p>
+        </div>
+        <div class="project-year">2025+</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <div class="project-placeholder">
+          <div class="big">BOLDe</div>
+          <div class="small">// BRAND LEAD</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <div class="project-category">// BRAND CREATIVE LEAD</div>
+          <h3 class="project-title">BOLDe Home & Living</h3>
+          <p class="project-description">Led a creative team — managed day-to-day output, built team morale, assigned tasks, and maintained BOLDe's brand identity across channels.</p>
+        </div>
+        <div class="project-year">22—23</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <div class="project-placeholder">
+          <div class="big">OPPO</div>
+          <div class="small">// CAMPAIGN MOTION</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <div class="project-category">// MOTION GRAPHICS</div>
+          <h3 class="project-title">OPPO Indonesia</h3>
+          <p class="project-description">Brand maintenance via commercial livestreams, talent integration, and social campaigns. Built through Jet-Commerce as motion designer.</p>
+        </div>
+        <div class="project-year">21—22</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <div class="project-placeholder">
+          <div class="big">MTHR</div>
+          <div class="small">// GRAPHIC DESIGN</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <div class="project-category">// VISUAL CAMPAIGNS</div>
+          <h3 class="project-title">Matahari.com</h3>
+          <p class="project-description">Website banners, social media posts, GDN, RTB and video content for one of Indonesia's largest retailers. Strategy + execution.</p>
+        </div>
+        <div class="project-year">19—21</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <div class="project-placeholder">
+          <div class="big">FTL</div>
+          <div class="small">// MARKETING MOTION</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <div class="project-category">// CAMPAIGN VISUALIZER</div>
+          <h3 class="project-title">FTL Gym (Epicultura)</h3>
+          <p class="project-description">Motion concepts, storyboards, and social-first campaigns. Visualized FTL's positioning across digital channels.</p>
+        </div>
+        <div class="project-year">2022</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="section-header">
+    <div class="section-label">// CAREER TIMELINE</div>
+    <div class="section-number">[02 / 04]</div>
+  </div>
+
+  <h2 class="section-title">10+ Years<br>In Motion.</h2>
+
+  <div class="timeline">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item current">
+      <div class="timeline-year">2025 — NOW</div>
+      <div class="timeline-content">
+        <div class="timeline-role">Digital Designer & Motion Graphics<span class="current-badge"><span class="status-dot"></span>CURRENT</span></div>
+        <div class="timeline-company">Popl.co</div>
+        <p class="timeline-description">Tackling a highly dynamic mix of creative and marketing projects to elevate the brand's digital presence. Blending motion graphics, UI/UX thinking, and performance marketing — editing podcast videos, animating logos, designing Figma layouts, and producing creative assets for LinkedIn and Meta Ads.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2022 — 2023</div>
+      <div class="timeline-content">
+        <div class="timeline-role">Brand Creative Lead</div>
+        <div class="timeline-company">BOLDe Home & Living</div>
+        <p class="timeline-description">Gained valuable team management skills leading a small creative team. Built team morale, handled day-to-day objectives, assigned tasks, and solved problems while maintaining BOLDe as a brand.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2022</div>
+      <div class="timeline-content">
+        <div class="timeline-role">Motion Graphic Designer</div>
+        <div class="timeline-company">Epicultura (FTL Gym)</div>
+        <p class="timeline-description">Marketing concept visualizer under the Marketing Head. Conceptualized and visualized FTL Gym campaigns across social platforms, storyboarding, and event planning.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2021 — 2022</div>
+      <div class="timeline-content">
+        <div class="timeline-role">Motion Graphic Designer</div>
+        <div class="timeline-company">PT. Global Jet Ecommerce</div>
+        <p class="timeline-description">Delved into deeper intricacies of brand maintenance. Contributed to conceptualizing the OPPO Indonesia brand across digital platforms — commercial livestreams, talent integration, and social media.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2019 — 2021</div>
+      <div class="timeline-content">
+        <div class="timeline-role">Graphic Designer</div>
+        <div class="timeline-company">PT. Matahari Department Store, Tbk.</div>
+        <p class="timeline-description">Conceptualized and crafted visual elements for target demographics — website banners, social media, GDN, RTB, and video content. Strengthened graphic design + marketing skills.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2015 — 2016</div>
+      <div class="timeline-content">
+        <div class="timeline-role">Event Technical Assistant</div>
+        <div class="timeline-company">Intel Indonesia Corporation</div>
+        <p class="timeline-description">Started early — event tech ops for one of Indonesia's largest enterprise tech players. Foundation for understanding how brands show up at scale.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-header">
+    <div class="section-label">// THE DESIGNER</div>
+    <div class="section-number">[03 / 04]</div>
+  </div>
+
+  <h2 class="section-title">About<br>Me.</h2>
+
+  <div class="about-grid">
+    <div class="about-image">
+      <div class="placeholder-text">RYO</div>
+    </div>
+
+    <div class="about-content">
+      <h3>Motion-first designer who thinks like a <span class="highlight">marketer</span>.</h3>
+
+      <div class="about-text">
+        <p>Hi — I'm Ryo. I'm an easygoing creative based in Jakarta with a passion for exploring new experiences. I seamlessly integrate with teams, collaborate effectively, and approach challenges with creativity and resilience.</p>
+        <p>My work spans motion graphics, brand identity, digital marketing, and UI/UX — from podcast editing and logo animation to performance ad creative and full Figma layouts. I've worked with brands like Popl, BOLDe, OPPO Indonesia, Matahari, and FTL Gym.</p>
+        <p>Off the clock, I'm building eGPU rigs, troubleshooting family PCs, deep in a Dune: Awakening session, or somewhere optimizing a controller setup.</p>
+      </div>
+
+      <div class="skills-section">
+        <h5 class="skills-header">// PROFESSIONAL SKILLS</h5>
+        <ul class="skills-list">
+          <li>Motion Graphics</li>
+          <li>Video Editing</li>
+          <li>Digital Marketing</li>
+          <li>Brand Management</li>
+          <li>Content Creation</li>
+          <li>Copywriting</li>
+          <li>Event Management</li>
+          <li>UI/UX Design</li>
+        </ul>
+      </div>
+
+      <div class="skills-section">
+        <h5 class="skills-header">// TOOLS</h5>
+        <div class="software-tags">
+          <span class="software-tag">After Effects</span>
+          <span class="software-tag">Premiere Pro</span>
+          <span class="software-tag">Photoshop</span>
+          <span class="software-tag">Illustrator</span>
+          <span class="software-tag">Figma</span>
+          <span class="software-tag">Adobe CC</span>
+          <span class="software-tag">MS Office</span>
+        </div>
+      </div>
+
+      <a href="CV_Theophilus_Ryo_Ticoalu.pdf" class="btn" download>
+        <span>↓ Download CV</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-cta">
+      <h5 style="font-family: var(--font-mono); color: var(--neon-cyan); font-size: 20px; margin-bottom: 24px; letter-spacing: 2px;">// [04 / 04] LET'S CONNECT</h5>
+      <h4>Got a <span class="neon">project</span> in mind?</h4>
+      <p>Available for collaborations, freelance, and creative direction. Reach out via email or WhatsApp — I'll get back fast.</p>
+      <a href="mailto:ryoticoalu@gmail.com" class="btn btn-primary">
+        <span>◢ START A PROJECT</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <h5>SOCIAL</h5>
+      <ul>
+        <li><a href="https://www.behance.net/ryoticoalu" target="_blank" rel="noopener">Behance</a></li>
+        <li><a href="https://www.instagram.com/ryoticoalu" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/ryoticoalu" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h5>DIRECT</h5>
+      <ul>
+        <li><a href="mailto:ryoticoalu@gmail.com">Email</a></li>
+        <li><a href="https://wa.me/6281314395809" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="CV_Theophilus_Ryo_Ticoalu.pdf" download>Resume</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 — THEOPHILUS RYO TICOALU // All rights reserved.</div>
+    <div>BUILT WITH ◢ IN JAKARTA</div>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-content">MOTION • BRAND • DIGITAL • MOTION • BRAND • DIGITAL • MOTION • BRAND • DIGITAL • </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.project-card, .about-content, .about-image, .timeline-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(40px)';
+  el.style.transition = 'opacity 0.8s, transform 0.8s';
+  observer.observe(el);
+});
+
+let keys = '';
+document.addEventListener('keydown', (e) => {
+  keys += e.key.toLowerCase();
+  if (keys.includes('vapor')) {
+    document.body.style.filter = 'hue-rotate(180deg) saturate(2)';
+    setTimeout(() => { document.body.style.filter = ''; }, 1500);
+    keys = '';
+  }
+  if (keys.length > 20) keys = keys.slice(-10);
+});
+</script>
+</body>
+</html>

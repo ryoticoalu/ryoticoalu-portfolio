@@ -30,3 +30,7 @@ dist/
 
 # Misc
 *.tmp
+
+# Staged drafts of live-page files (not for commit — local-only)
+index.new.html
+*.new.html

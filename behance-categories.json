@@ -1,0 +1,6 @@
+{
+  "_comment": "Maps Behance gallery IDs to a display category. Categories: 'video', 'static', 'gif', or 'hidden' (excludes from the public grid). Edit this file freely; the daily GitHub Action picks up changes on its next run. Use the manual trigger to apply immediately: gh workflow run sync-behance.yml --repo ryoticoalu/ryoticoalu-portfolio",
+  "194326607": "video",
+  "111311683": "static",
+  "212750615": "hidden"
+}
