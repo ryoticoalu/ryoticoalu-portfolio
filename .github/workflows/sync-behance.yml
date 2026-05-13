@@ -1,0 +1,35 @@
+name: Sync Behance projects
+
+on:
+  schedule:
+    # Daily at 04:00 UTC = 11:00 WIB (Jakarta, GMT+7) — morning refresh in Ryo's timezone
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    # Allows manual trigger from GitHub UI or `gh workflow run`
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch + parse Behance RSS
+        run: python scripts/fetch-behance.py
+        env:
+          BEHANCE_USERNAME: ryoticoalu
+
+      - name: Commit updated projects.json (only if changed)
+        run: |
+          if git diff --quiet projects.json 2>/dev/null; then
+            echo "No changes in projects.json — skipping commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects.json
+          git commit -m "chore(behance): auto-sync projects.json"
+          git push

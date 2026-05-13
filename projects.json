@@ -1,0 +1,31 @@
+{
+  "username": "ryoticoalu",
+  "fetched_at": "2026-05-13T17:28:23.779234Z",
+  "source": "https://www.behance.net/feeds/user?username=ryoticoalu",
+  "projects": [
+    {
+      "id": "194326607",
+      "title": "Portfolio - Motion Graphic Animation",
+      "url": "https://www.behance.net/gallery/194326607/Portfolio-Motion-Graphic-Animation",
+      "thumbnail": "https://mir-s3-cdn-cf.behance.net/projects/404/494d30194326607.Y3JvcCw0NTAwLDM1MTksMCw5NTc.png",
+      "published": "2024-03-20T04:13:33Z",
+      "category": null
+    },
+    {
+      "id": "111311683",
+      "title": "Portfolio - Social Media",
+      "url": "https://www.behance.net/gallery/111311683/Portfolio-Social-Media",
+      "thumbnail": "https://mir-s3-cdn-cf.behance.net/projects/404/42d566111311683.Y3JvcCw2MjUwLDQ4ODgsMCww.png",
+      "published": "2021-01-13T21:44:25Z",
+      "category": null
+    },
+    {
+      "id": "212750615",
+      "title": "Curriculum Vitae",
+      "url": "https://www.behance.net/gallery/212750615/Curriculum-Vitae",
+      "thumbnail": "https://mir-s3-cdn-cf.behance.net/projects/404/23ef57212750615.Y3JvcCw1MTY3LDQwNDEsMCwxNjM3.png",
+      "published": "2024-11-18T07:43:18Z",
+      "category": null
+    }
+  ]
+}
