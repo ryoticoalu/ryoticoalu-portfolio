@@ -32,14 +32,58 @@ Things to address in future Claude sessions. Loosely ordered by impact.
 - [ ] **Switch to Cloudflare's GitHub auto-deploy** — see [DEPLOY.md](DEPLOY.md#switching-to-github-auto-deploy-optional-later). Removes the manual Wrangler step. Trade-off: every push deploys, including drafts/typos.
 - [ ] **Local preview hot-reload** — for richer editing, swap `python -m http.server` for [live-server](https://www.npmjs.com/package/live-server) so saves auto-refresh the browser.
 
-## Creative MCP exploration (post-Windows-MCP)
+## Creative MCP exploration
 
-Things to try once Windows-MCP is stable and you're comfortable with it. These all benefit from a designer's automation but are experimental:
+### Next install: Dakkshin/after-effects-mcp (scheduled for a focused session)
 
-- [ ] **Photoshop layer batch operations** — try [mikechambers/adb-mcp](https://github.com/mikechambers/adb-mcp) for batch layer renaming, structured export of layer comps, or generating boilerplate PSD templates.
-- [ ] **After Effects composition generation from briefs** — investigate [Dakkshin/after-effects-mcp](https://github.com/Dakkshin/after-effects-mcp) (ExtendScript-based). Workflow: paste a creative brief → MCP generates an AE composition skeleton with placeholders for footage, text, and animation presets.
-- [ ] **Premiere project bootstrapping for podcast episodes** — for the IPGTM podcast workflow specifically. Bootstrap a Premiere project with sequence presets, color labels for guest/host tracks, and audio routing already configured. Saves the per-episode setup time.
-- [ ] **Honest reality check first** — community Adobe MCPs require manual UXP plugin installs in each Adobe app. Worth doing a small experiment before committing. Start with Photoshop since it's the most stable target.
+**Why this one, decided 2026-05-14**: AE-MCP talks to AE's native ExtendScript API — fast, precise, robust to UI changes. Windows-MCP alone for AE is wrong (brittle pixel-clicking). 354 stars, MIT license, last push 2026-04-01. The friction is real but pays off for any structured AE work. See [Dakkshin/after-effects-mcp](https://github.com/Dakkshin/after-effects-mcp).
+
+**Why I rejected `pypi:adobe-mcp`** (researched 2026-05-14): the linked GitHub repo `VoidChecksum/adobe-mcp` 404s — no public source for a tool that gets COM-automation access to Adobe apps. Skip until either restored or independently verified.
+
+**Prerequisites before next session:**
+- [ ] Set aside ~30 min of focused time (this is NOT a 5-min thing)
+- [ ] Have After Effects 2022 or later open
+- [ ] Have a clear test case in mind — recommended first prompt: *"Create a 1920×1080 30fps 10-second comp called 'TEST', add a text layer with the word 'HELLO', animate its position from (-200, 540) to (960, 540) over 1 second with ease-out keyframes."* If this works end-to-end, the install is solid.
+- [ ] Node.js already installed (✓ done 2026-05-13)
+
+**Install steps to run in next session:**
+```powershell
+cd C:\Claude
+git clone https://github.com/Dakkshin/after-effects-mcp.git
+cd after-effects-mcp
+npm install
+npm run build
+npm run install-bridge      # writes mcp-bridge-auto.jsx into AE's Scripts folder
+```
+
+**Then in After Effects:**
+1. Window menu → mcp-bridge-auto.jsx (panel appears)
+2. Check "Auto-run commands" in the panel
+3. Keep AE foreground for COM operations to work reliably
+
+**Then add to Claude (next session):**
+```powershell
+claude mcp add ae-mcp --transport stdio -s user -- node C:\Claude\after-effects-mcp\build\index.js
+```
+
+**Risks logged:**
+- Install modifies AE's Scripts folder (reversible — delete the `.jsx` to undo)
+- Issue #7 from May 2025 had multiple "can't use any feature" reports. Year old, may be fixed, no resolution thread. If first test fails, check issues #7, #22, #23 before reinstalling.
+- Project pace is slowing (6 weeks since last push). Not abandoned, but not hot either.
+
+**Tools the MCP exposes (from README):**
+`create-composition`, `run-script`, `get-results`, `get-help`, `setLayerKeyframe`, `setLayerExpression`, `setLayerProperties`, `batchSetLayerProperties`, `getLayerInfo`, `createCamera`, `createNullObject`, `duplicateLayer`, `deleteLayer`, `setLayerMask` (14 total).
+
+### The end-goal use case: podcast episode scaffolding
+
+For the IPGTM podcast workflow specifically — once AE-MCP is in: define a template brief format ("guest name, episode number, intro length, key talking points") → Claude scaffolds the AE comp with title cards, lower-thirds placeholders, and standard transitions → I review and tweak. Realistic time savings: hours per episode.
+
+### Other Adobe MCPs (deferred, not next)
+
+- [Dakkshin/after-effects-mcp](https://github.com/Dakkshin/after-effects-mcp) — already covered above
+- [hetpatel-11/Adobe_Premiere_Pro_MCP](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP) — 214 stars, pushed 2026-05-11. Premiere-specific. Try after AE-MCP if it pans out.
+- [mikechambers/adb-mcp](https://github.com/mikechambers/adb-mcp) — PS + PR via UXP plugins. The OG. Lower priority since we're going AE-first.
+- [Official Adobe for Creativity connector](https://developer.adobe.com/adobe-for-creativity/) — Claude.ai web app, zero install. Different use case (Adobe cloud APIs + Firefly, not local app automation). Worth enabling in Claude.ai for content generation tasks.
 
 ## Notes / ideas (not yet TODO)
 
