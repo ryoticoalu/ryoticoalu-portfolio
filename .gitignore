@@ -1,0 +1,32 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (none for vanilla site, but future-proof)
+node_modules/
+
+# Build / cache
+.cache/
+dist/
+.parcel-cache/
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.tmp
